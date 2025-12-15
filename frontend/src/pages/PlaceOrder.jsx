@@ -3,7 +3,7 @@ import { useNavigate, Link } from "react-router-dom";
 import { useCart } from "../context/CartContext";
 import axios from "axios";
 import { motion } from "framer-motion";
-
+import { BASE_URL } from "../apiConfig";
 const PlaceOrder = () => {
   const navigate = useNavigate();
   const { cartItems, shippingAddress, clearCart } = useCart();
@@ -57,7 +57,7 @@ const PlaceOrder = () => {
 
       // Fire the request!
       const { data } = await axios.post(
-        "http://localhost:5001/api/orders",
+        `${BASE_URL}/api/orders`,
         orderData,
         config
       );

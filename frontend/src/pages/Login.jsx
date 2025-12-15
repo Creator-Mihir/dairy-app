@@ -3,6 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { motion } from "framer-motion";
 import { FiEye, FiEyeOff } from "react-icons/fi"; // Import Eye Icons
+import { BASE_URL } from "../apiConfig";
 
 const Login = () => {
   const [formData, setFormData] = useState({ email: "", password: "" });
@@ -20,7 +21,7 @@ const Login = () => {
     e.preventDefault();
     setError("");
     try {
-      const { data } = await axios.post("http://localhost:5001/api/auth/login", {
+      const { data } = await axios.post(`${BASE_URL}/api/auth/login`, {
         email,
         password,
       });

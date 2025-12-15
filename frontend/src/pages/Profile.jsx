@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
-
+import { BASE_URL } from "../apiConfig";
 const Profile = () => {
   const [orders, setOrders] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -28,7 +28,7 @@ const Profile = () => {
         },
       };
 
-      const { data } = await axios.get("http://localhost:5001/api/orders/myorders", config);
+      const { data } = await axios.get(`${BASE_URL}/api/orders/myorders`, config);
       setOrders(data);
       setLoading(false);
     } catch (err) {

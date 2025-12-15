@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useParams, Link } from "react-router-dom";
-
+import { BASE_URL } from "../apiConfig";
 const OrderScreen = () => {
   const { id } = useParams(); // Get ID from URL
   const [order, setOrder] = useState(null);
@@ -16,7 +16,7 @@ const OrderScreen = () => {
         const config = {
           headers: { Authorization: `Bearer ${userInfo.token}` },
         };
-        const { data } = await axios.get(`http://localhost:5001/api/orders/${id}`, config);
+        const { data } = await axios.get(`${BASE_URL}/api/orders/${id}`, config);
         setOrder(data);
         setLoading(false);
       } catch (error) {
@@ -34,7 +34,7 @@ const OrderScreen = () => {
         headers: { Authorization: `Bearer ${userInfo.token}` },
       };
       // We need to create this route in Backend next!
-      await axios.put(`http://localhost:5001/api/orders/${id}/deliver`, {}, config);
+      await axios.put(`${BASE_URL}/api/orders/${id}/deliver`, {}, config);
       
       // Refresh page to see changes
       window.location.reload();

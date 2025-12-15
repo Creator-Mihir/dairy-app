@@ -2,14 +2,14 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 import { FiEdit, FiTrash2, FiPlus } from "react-icons/fi";
-
+import { BASE_URL } from "../apiConfig";
 const ProductList = () => {
   const [products, setProducts] = useState([]);
   const navigate = useNavigate();
   const userInfo = JSON.parse(localStorage.getItem("userInfo"));
 
   const fetchProducts = async () => {
-    const { data } = await axios.get("http://localhost:5001/api/products");
+    const { data } = await axios.get(`${BASE_URL}/api/products`);
     setProducts(data);
   };
 
@@ -27,7 +27,7 @@ const ProductList = () => {
         const config = {
           headers: { Authorization: `Bearer ${userInfo.token}` },
         };
-        await axios.delete(`http://localhost:5001/api/products/${id}`, config);
+        await axios.delete(`${BASE_URL}/api/products/${id}`, config);
         fetchProducts(); // Refresh list after delete
       } catch (error) {
         alert("Error deleting product");
@@ -42,7 +42,7 @@ const ProductList = () => {
           headers: { Authorization: `Bearer ${userInfo.token}` },
         };
         // 1. Create a "Sample Product"
-        const { data } = await axios.post("http://localhost:5001/api/products", {}, config);
+        const { data } = await axios.post(`${BASE_URL}/api/products`, {}, config);
         
         // 2. Immediately take user to the Edit Page for that new product
         navigate(`/admin/product/${data._id}/edit`);

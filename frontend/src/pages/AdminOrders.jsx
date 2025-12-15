@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-
+import { BASE_URL } from "../apiConfig"; // <--- Import the file you made
 const AdminOrders = () => {
   const [orders, setOrders] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -24,7 +24,7 @@ const AdminOrders = () => {
           Authorization: `Bearer ${user.token}`, // Admin Token
         },
       };
-      const { data } = await axios.get("http://localhost:5001/api/orders", config);
+      const { data } = await axios.get(`${BASE_URL}:5001/api/orders`, config);
       setOrders(data);
       setLoading(false);
     } catch (error) {

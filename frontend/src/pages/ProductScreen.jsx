@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useParams, Link, useNavigate } from "react-router-dom"; 
 import axios from "axios";
-
+import { BASE_URL } from "../apiConfig";
 const ProductScreen = () => {
   const { id } = useParams();
   const navigate = useNavigate();
@@ -16,7 +16,7 @@ const ProductScreen = () => {
 
   const fetchProduct = async () => {
     try {
-      const { data } = await axios.get(`http://localhost:5001/api/products/${id}`);
+      const { data } = await axios.get(`${BASE_URL}/api/products/${id}`);
       setProduct(data);
       setLoading(false);
     } catch (error) {
@@ -40,7 +40,7 @@ const ProductScreen = () => {
       };
 
       await axios.post(
-        `http://localhost:5001/api/products/${id}/reviews`,
+        `${BASE_URL}/api/products/${id}/reviews`,
         { rating, comment },
         config
       );

@@ -3,6 +3,7 @@ import axios from "axios";
 import ProductCard from "../components/ProductCard";
 import { motion } from "framer-motion";
 import { useRef } from "react";
+import { BASE_URL } from "../apiConfig";
 
 
 const Home = ({ freshCollectionRef }) => {
@@ -25,7 +26,7 @@ const Home = ({ freshCollectionRef }) => {
           window.scrollTo(0, 0); // Scroll to top if just "/"
         }
       
-        const { data } = await axios.get("http://localhost:5001/api/products");
+        const { data } = await axios.get(`${BASE_URL}/api/products`);
         
         // --- SORTING LOGIC ---
         // We define the custom order: Ghee first, then Milk, then Curd.

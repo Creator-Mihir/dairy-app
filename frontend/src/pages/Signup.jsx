@@ -3,7 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { motion } from "framer-motion";
 import { FiEye, FiEyeOff } from "react-icons/fi";
-
+import { BASE_URL } from "../apiConfig";
 const Signup = () => {
   const [formData, setFormData] = useState({
     name: "",
@@ -33,7 +33,7 @@ const Signup = () => {
 
     try {
       // 2. Register the user
-      const { data } = await axios.post("http://localhost:5001/api/auth/signup", {
+      const { data } = await axios.post(`${BASE_URL}/api/auth/signup`, {
         name,
         email,
         password,

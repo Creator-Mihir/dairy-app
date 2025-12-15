@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Link, useNavigate, useParams } from "react-router-dom";
-
+import { BASE_URL } from "../apiConfig";
 const ProductEdit = () => {
   const { id } = useParams(); // Get Product ID from URL
   const navigate = useNavigate();
@@ -19,7 +19,7 @@ const ProductEdit = () => {
     // Fetch current data to fill the form
     const fetchProduct = async () => {
       try {
-        const { data } = await axios.get(`http://localhost:5001/api/products/${id}`);
+        const { data } = await axios.get(`${BASE_URL}/api/products/${id}`);
         setName(data.name);
         setPrice(data.price);
         setImage(data.image);
@@ -45,7 +45,7 @@ const ProductEdit = () => {
 
       // Send the updated data
       await axios.put(
-        `http://localhost:5001/api/products/${id}`,
+        `${BASE_URL}/api/products/${id}`,
         { name, price, image, category, stock, description },
         config
       );
