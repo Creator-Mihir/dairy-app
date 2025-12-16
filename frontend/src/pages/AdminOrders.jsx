@@ -24,7 +24,7 @@ const AdminOrders = () => {
           Authorization: `Bearer ${user.token}`, // Admin Token
         },
       };
-      const { data } = await axios.get(`${BASE_URL}:5001/api/orders`, config);
+      const { data } = await axios.get(`${BASE_URL}/api/orders`, config);
       setOrders(data);
       setLoading(false);
     } catch (error) {
