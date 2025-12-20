@@ -11,8 +11,8 @@ const app = express();
 
 app.use(cors({
   origin: ["http://localhost:5173", // Allow your React app
-  "https://dairy-app-smoky.vercel.app",
-        "https://dairy-app-git-main-mihirs-projects-b031d792.vercel.app"],
+  "https://gurjars-dairy.vercel.app",
+        "https://gurjars-dairy-git-main-mihirs-projects-b031d792.vercel.app"],
   credentials: true // Allow cookies/tokens if needed
 }));
 app.use(express.json());
