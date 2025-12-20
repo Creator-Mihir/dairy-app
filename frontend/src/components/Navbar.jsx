@@ -45,7 +45,11 @@ const Navbar = ({ onShopClick }) => {
           
           {/* 1. LOGO */}
           <Link to="/" className="text-2xl font-serif font-bold flex items-center gap-2 group">
-            <span className="text-3xl group-hover:scale-110 transition-transform">🥛</span>
+            <img
+              src="/logo.png"
+              alt="Logo"
+              className="h-10 object-contain group-hover:scale-110 transition-transform"
+            />
             <span className={`transition-colors ${scrolled ? "text-dairy-dark" : "text-white"}`}>
               <span className="text-dairy-gold">Gurjar's </span>Dairy
             </span>
